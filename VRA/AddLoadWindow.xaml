@@ -1,0 +1,65 @@
+﻿<Window x:Class="VRA.AddLoadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VRA"
+        mc:Ignorable="d"
+        Title="Нагрузка" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" MinHeight="254" MinWidth="302" Height="152" Width="134">
+    <Grid Margin="0,2,0,-2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="ID Учителя *" Grid.Row="0" Grid.Column="0" Margin="3,3,3,3"/>
+        <ComboBox x:Name="cbTeacher" Grid.Row="0" Grid.Column="1" Margin="3,3,3,3" ItemsSource="{Binding}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=TeacherId}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=FirstName}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=SecondName}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="Группа *" Grid.Row="1" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbGroupNumber" Grid.Row="1" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Text="Дата" Grid.Row="2" Grid.Column="0" Margin="3,3,3,3"/>
+        <DatePicker x:Name="dpLoadDate" Grid.Row="2" Grid.Column="1" Margin="3,3,3,3" AllowDrop="True"/>
+        <TextBlock Text="Предмет *" Grid.Row="3" Grid.Column="0" Margin="3,3,3,3"/>
+        <ComboBox x:Name="cbSubject" Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" ItemsSource="{Binding}" DisplayMemberPath="Title"/>
+        <TextBlock Text="Тип занятия *" Grid.Row="4" Grid.Column="0" Margin="3,3,3,3"/>
+        <ComboBox x:Name="cbTypeOfClass" Grid.Row="4" Grid.Column="1" Margin="3,3,3,3" ItemsSource="{Binding}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=TypeOfClassId}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=TypeOfClassName}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=ClassHours}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Grid.Row="5" FontStyle="Italic" FontSize="11" TextAlignment="Center" Margin="0,6,-1,3" Grid.ColumnSpan="2" > обязательные для заполнение поля помечены "*"</TextBlock>
+
+        <Button x:Name="btnSave" Grid.Row="6" Grid.Column="0" Content="Сохранить" Margin="10,2,8,8" Click="btnSave_Click" />
+        <Button x:Name="btnCancel" Grid.Row="6" Grid.Column="1" Content="Отмена" Margin="10,2,8,8" Click="btnCancel_Click" />
+    </Grid>
+</Window>

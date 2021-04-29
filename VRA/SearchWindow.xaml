@@ -1,0 +1,35 @@
+﻿<Window x:Class="VRA.SearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VRA"
+        mc:Ignorable="d"
+        Title="SearchWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem x:Name ="sTeacher" Header="Поиск учителя">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column ="0" Margin="3" Text="Фамилия учителя"/>
+                    <TextBox Name="tbSecondName" Grid.Row ="0" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name ="btnSearchTeachers" Content="Принять" Margin="3" Width="70" Click="SearchTeachers" />
+                        <Button x:Name ="btnCancelT" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

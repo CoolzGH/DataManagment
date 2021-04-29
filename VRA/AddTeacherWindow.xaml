@@ -1,0 +1,43 @@
+﻿<Window x:Class="VRA.AddTeacherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VRA"
+        mc:Ignorable="d"
+        Title="Учитель" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" MinHeight="254" MinWidth="302" Height="152" Width="134">
+    <Grid Margin="0,2,0,-2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Фамилия *" Grid.Row="0" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbSecondName" Grid.Row="0" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Text="Имя *" Grid.Row="1" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbFirstName" Grid.Row="1" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Text="Отчество" Grid.Row="2" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbMiddleName" Grid.Row="2" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Text="Учёная степень" Grid.Row="3" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbAcademicDegree" Grid.Row="3" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Text="Должность" Grid.Row="4" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbPosition" Grid.Row="4" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Text="Опыт" Grid.Row="5" Grid.Column="0" Margin="3,3,3,3"/>
+        <TextBox x:Name="tbExperience" Grid.Row="5" Grid.Column="1" Margin="3,3,3,3"/>
+        <TextBlock Grid.Row="6" FontStyle="Italic" FontSize="11" TextAlignment="Center" Margin="0,6,-1,3" Grid.ColumnSpan="2" > обязательные для заполнение поля помечены "*"</TextBlock>
+
+        <Button x:Name="btnSave" Grid.Row="7" Grid.Column="0" Content="Сохранить" Margin="10,2,8,8" Click="btnSave_Click" />
+        <Button x:Name="btnCancel" Grid.Row="7" Grid.Column="1" Content="Отмена" Margin="10,2,8,8" Click="btnCancel_Click" />
+    </Grid>
+</Window>
