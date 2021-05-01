@@ -26,7 +26,13 @@
                     <TextBox Name="tbSecondName" Grid.Row ="0" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
                     <TextBlock Grid.Row="1" Grid.Column ="0" Margin="3" Text="Имя учителя"/>
                     <TextBox Name="tbFirstName" Grid.Row ="1" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
-                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Grid.Row="2" Grid.Column ="0" Margin="3" Text="Отчество учителя"/>
+                    <TextBox Name="tbMiddleName" Grid.Row ="2" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="3" Grid.Column ="0" Margin="3" Text="Учённая степень"/>
+                    <TextBox Name="tbAcademicDegree" Grid.Row ="3" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="4" Grid.Column ="0" Margin="3" Text="Должность"/>
+                    <TextBox Name="tbPosition" Grid.Row ="4" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchTeachers" Content="Принять" Margin="3" Width="70" Click="SearchTeachers" />
                         <Button x:Name ="btnCancelT" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>

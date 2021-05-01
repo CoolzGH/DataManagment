@@ -33,6 +33,6 @@ namespace VRA.BusinessLayer
         /// <param name=«id»>id учителя, которого надо удалить</param>
         void Delete(int id);
 
-        IList<TeacherDto> SearchTeachers(string SecondName, string FirstName);
+        IList<TeacherDto> SearchTeachers(string SecondName, string FirstName, string MiddleName, string AcademicDegree, string Position);
     }
 }
