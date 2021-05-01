@@ -42,6 +42,6 @@ namespace VRA.DataAccess
         /// <param name="id">ID удаляемого учителя</param>
         void Delete(int id);
 
-        IList<Teacher> SearchTeachers(string SecondName);
+        IList<Teacher> SearchTeachers(string SecondName, string FirstName);
     }
 }

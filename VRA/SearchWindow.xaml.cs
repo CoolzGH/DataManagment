@@ -44,7 +44,7 @@ namespace VRA
 
         private void SearchTeachers(object sender, RoutedEventArgs e)
         {
-            this.FindedTeachers = ProcessFactory.GetTeacherProcess().SearchTeachers(this.tbSecondName.Text);
+            this.FindedTeachers = ProcessFactory.GetTeacherProcess().SearchTeachers(this.tbSecondName.Text, this.tbFirstName.Text);
             this.exec = true;
             this.Close();
         }

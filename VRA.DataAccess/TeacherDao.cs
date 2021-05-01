@@ -127,7 +127,7 @@ namespace VRA.DataAccess
             }
         }
 
-        public IList<Teacher> SearchTeachers(string SecondName)
+        public IList<Teacher> SearchTeachers(string SecondName, string FirstName)
         {
             IList<Teacher> teachers = new List<Teacher>();
             using (var conn = GetConnection())
@@ -135,8 +135,9 @@ namespace VRA.DataAccess
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT TeacherID, SecondName, FirstName, MiddleName, AcademicDegree, Position, Experience FROM Teacher WHERE SecondName like @SecondName";
+                    cmd.CommandText = "SELECT TeacherID, SecondName, FirstName, MiddleName, AcademicDegree, Position, Experience FROM Teacher WHERE SecondName like @SecondName AND FirstName like @FirstName";
                     cmd.Parameters.AddWithValue("@SecondName","%"+SecondName +"%");
+                    cmd.Parameters.AddWithValue("@FirstName", "%" + FirstName + "%");
                     using (var dataReader = cmd.ExecuteReader())
                     {
                         while (dataReader.Read())
