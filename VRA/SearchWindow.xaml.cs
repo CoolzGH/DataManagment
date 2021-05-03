@@ -44,9 +44,17 @@ namespace VRA
 
         private void SearchTeachers(object sender, RoutedEventArgs e)
         {
-            this.FindedTeachers = ProcessFactory.GetTeacherProcess().SearchTeachers(this.tbSecondName.Text, this.tbFirstName.Text, this.tbMiddleName.Text, this.tbAcademicDegree.Text, this.tbPosition.Text);
-            this.exec = true;
-            this.Close();
+            int intExperience;
+            if (int.TryParse(tbExperience.Text, out intExperience) || tbExperience.Text == "")
+            {
+                this.FindedTeachers = ProcessFactory.GetTeacherProcess().SearchTeacher(this.tbSecondName.Text, this.tbFirstName.Text, this.tbMiddleName.Text, this.tbAcademicDegree.Text, this.tbPosition.Text, this.tbExperience.Text);
+                this.exec = true;
+                this.Close();
+            }
+            else 
+            {
+                MessageBox.Show("Опыт должен быть числом", "Проверка");
+            }
         }
     }
 }
