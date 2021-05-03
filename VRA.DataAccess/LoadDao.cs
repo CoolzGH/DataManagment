@@ -123,5 +123,32 @@ namespace VRA.DataAccess
                 }
             }
         }
+
+        public IList<Load> SearchLoads(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID)
+        {
+            IList<Load> loads = new List<Load>();
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Load WHERE LoadID like CASE WHEN @LoadID not like '' THEN @LoadID Else '%' END AND TeacherID like CASE WHEN @TeacherID not like '' THEN @TeacherID Else '%' END AND GroupNumber like CASE WHEN @GroupNumber not like '' THEN @GroupNumber Else '%' END AND SubjectID like @SubjectID AND TypeOfClassID like CASE WHEN @TypeOfClassID not like '' THEN @TypeOfClassID Else '%' END";
+                    cmd.Parameters.AddWithValue("@LoadID", LoadID);
+                    cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
+                    cmd.Parameters.AddWithValue("@GroupNumber", GroupNumber);
+                    cmd.Parameters.AddWithValue("@LoadDate", "%" + LoadDate + "%");
+                    cmd.Parameters.AddWithValue("@SubjectID", "%" + SubjectID);
+                    cmd.Parameters.AddWithValue("@TypeOfClassID", TypeOfClassID);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            loads.Add(LoadLoad(dataReader));
+                        }
+                    }
+                }
+            }
+            return loads;
+        }
     }
 }

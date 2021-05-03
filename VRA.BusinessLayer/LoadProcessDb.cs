@@ -35,5 +35,11 @@ namespace VRA.BusinessLayer
         {
             _loadDao.Delete(id);
         }
+
+        public IList<LoadDto> SearchLoad(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID)
+        {
+            return DtoConverter.Convert(_loadDao.SearchLoads(LoadID, TeacherID, GroupNumber, LoadDate, SubjectID, TypeOfClassID));
+        }
+
     }
 }

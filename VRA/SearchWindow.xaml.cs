@@ -24,10 +24,12 @@ namespace VRA
         private readonly IList<TeacherDto> AllowTeachers = ProcessFactory.GetTeacherProcess().GetList();
         private readonly IList<SubjectDto> AllowSubjects = ProcessFactory.GetSubjectProcess().GetList();
         private readonly IList<TypeOfClassDto> AllowTypeOfClasses = ProcessFactory.GetTypeOfClassProcess().GetList();
+        private readonly IList<LoadDto> AllowLoads = ProcessFactory.GetLoadProcess().GetList();
 
         public IList<TeacherDto> FindedTeachers;
         public IList<SubjectDto> FindedSubjects;
         public IList<TypeOfClassDto> FindedTypeOfClasses;
+        public IList<LoadDto> FindedLoads;
 
         private static readonly string[] TypeOfClasses = { "лекция", "практика" };
 
@@ -38,6 +40,9 @@ namespace VRA
             InitializeComponent();
 
             this.cbTypeOfClassName.ItemsSource = TypeOfClasses;
+            this.cbTeacherID.ItemsSource = AllowTeachers;
+            this.cbSubjectID.ItemsSource = AllowSubjects;
+            this.cbTypeOfClassID.ItemsSource = AllowTypeOfClasses;
 
             switch (status)
             {
@@ -45,16 +50,25 @@ namespace VRA
                     this.SearchTab.SelectedIndex = 0;
                     this.sSubject.Visibility = Visibility.Collapsed;
                     this.sTypeOfClass.Visibility = Visibility.Collapsed;
+                    this.sLoad.Visibility = Visibility.Collapsed;
                     break;
                 case "subject":
                     this.SearchTab.SelectedIndex = 1;
                     this.sTeacher.Visibility = Visibility.Collapsed;
                     this.sTypeOfClass.Visibility = Visibility.Collapsed;
+                    this.sLoad.Visibility = Visibility.Collapsed;
                     break;
                 case "typeofclass":
                     this.SearchTab.SelectedIndex = 2;
                     this.sSubject.Visibility = Visibility.Collapsed;
                     this.sTeacher.Visibility = Visibility.Collapsed;
+                    this.sLoad.Visibility = Visibility.Collapsed;
+                    break;
+                case "load":
+                    this.SearchTab.SelectedIndex = 3;
+                    this.sSubject.Visibility = Visibility.Collapsed;
+                    this.sTeacher.Visibility = Visibility.Collapsed;
+                    this.sTypeOfClass.Visibility = Visibility.Collapsed;
                     break;
             }
         }
@@ -91,7 +105,7 @@ namespace VRA
             }
             else
             {
-                MessageBox.Show("ID или Часы должены быть числом", "Проверка");
+                MessageBox.Show("ID или Часы должны быть числом", "Проверка");
             }
         }
 
@@ -107,7 +121,23 @@ namespace VRA
             }
             else
             {
-                MessageBox.Show("ID или Часы должены быть числом", "Проверка");
+                MessageBox.Show("ID или Часы должны быть числом", "Проверка");
+            }
+        }
+
+        private void SearchLoads(object sender, RoutedEventArgs e)
+        {
+            int intLoadID;
+            int intGroupNumber;
+            if ((int.TryParse(tbLoadID.Text, out intLoadID) || tbLoadID.Text == "") && (int.TryParse(tbGroupNumber.Text, out intGroupNumber) || tbGroupNumber.Text == ""))
+            {
+                this.FindedLoads = ProcessFactory.GetLoadProcess().SearchLoad(this.tbLoadID.Text, this.cbTeacherID.Text, this.tbGroupNumber.Text, this.dpLoadDate.Text, this.cbSubjectID.Text, this.cbTypeOfClassID.Text);
+                this.exec = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("ID или Номер группы должны быть числом", "Проверка");
             }
         }
     }

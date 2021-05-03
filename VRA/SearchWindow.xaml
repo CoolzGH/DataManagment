@@ -93,6 +93,52 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem x:Name ="sLoad" Header="Поиск нагрузки">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column ="0" Margin="3" Text="ID нагрузки"/>
+                    <TextBox Name="tbLoadID" Grid.Row ="0" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="1" Grid.Column ="0" Margin="3" Text="ID учителя"/>
+                    <ComboBox Name="cbTeacherID" Grid.Row ="1" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DisplayMemberPath="TeacherId">
+                    </ComboBox>
+                    <TextBlock Grid.Row="2" Grid.Column ="0" Margin="3" Text="Номер группы"/>
+                    <TextBox Name="tbGroupNumber" Grid.Row ="2" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="3" Grid.Column ="0" Margin="3" Text="Дата нагрузки"/>
+                    <DatePicker Name="dpLoadDate" Grid.Row ="3" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="4" Grid.Column ="0" Margin="3" Text="ID предмета"/>
+                    <ComboBox Name="cbSubjectID" Grid.Row ="4" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=SubjectId}"/>
+                                    <TextBlock Text=" - "/>
+                                    <TextBlock Text="{Binding Path=Title}"/>
+                                    <TextBlock Text=" - "/>
+                                    <TextBlock Text="{Binding Path=SubjectHours}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Row="5" Grid.Column ="0" Margin="3" Text="ID типа занятия"/>
+                    <ComboBox Name="cbTypeOfClassID" Grid.Row ="5" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DisplayMemberPath="TypeOfClassId"/>
+                    <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name ="btnSearchLoads" Content="Принять" Margin="3" Width="70" Click="SearchLoads" />
+                        <Button x:Name ="btnCancelL" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

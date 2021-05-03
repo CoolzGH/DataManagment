@@ -17,5 +17,7 @@ namespace VRA.DataAccess
         void Update(Load load);
 
         void Delete(int id);
+
+        IList<Load> SearchLoads(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID);
     }
 }
