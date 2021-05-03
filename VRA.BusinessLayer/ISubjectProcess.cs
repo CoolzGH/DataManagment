@@ -34,5 +34,7 @@ namespace VRA.BusinessLayer
         /// </summary>
         /// <param name=«id»>id предмета, которого надо удалить</param>
         void Delete(int id);
+
+        IList<SubjectDto> SearchSubject(string SubjectID, string Title, string SubjectHours);
     }
 }

@@ -41,5 +41,7 @@ namespace VRA.DataAccess
         /// </summary>
         /// <param name="id">ID удаляемого предмета</param>
         void Delete(int id);
+
+        IList<Subject> SearchSubjects(string SubjectID, string Title, string SubjectHours);
     }
 }

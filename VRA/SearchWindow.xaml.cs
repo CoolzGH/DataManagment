@@ -22,8 +22,10 @@ namespace VRA
     public partial class SearchWindow : Window
     {
         private readonly IList<TeacherDto> AllowTeachers = ProcessFactory.GetTeacherProcess().GetList();
+        private readonly IList<SubjectDto> AllowSubjects = ProcessFactory.GetSubjectProcess().GetList();
 
         public IList<TeacherDto> FindedTeachers;
+        public IList<SubjectDto> FindedSubjects;
 
         public bool exec;
 
@@ -33,6 +35,12 @@ namespace VRA
             switch (status)
             {
                 case "teacher":
+                    this.SearchTab.SelectedIndex = 0;
+                    this.sSubject.Visibility = Visibility.Collapsed;
+                    break;
+                case "subject":
+                    this.SearchTab.SelectedIndex = 1;
+                    this.sTeacher.Visibility = Visibility.Collapsed;
                     break;
             }
         }
@@ -54,6 +62,22 @@ namespace VRA
             else 
             {
                 MessageBox.Show("Опыт должен быть числом", "Проверка");
+            }
+        }
+
+        private void SearchSubjects(object sender, RoutedEventArgs e)
+        {
+            int intSubjectID;
+            int intSubjectHours;
+            if ((int.TryParse(tbSubjectID.Text, out intSubjectID) || tbSubjectID.Text == "") && (int.TryParse(tbSubjectHours.Text, out intSubjectHours) || tbSubjectHours.Text == ""))
+            {
+                this.FindedSubjects = ProcessFactory.GetSubjectProcess().SearchSubject(this.tbSubjectID.Text, this.tbTitle.Text, this.tbSubjectHours.Text);
+                this.exec = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("ID или Часы должены быть числом", "Проверка");
             }
         }
     }

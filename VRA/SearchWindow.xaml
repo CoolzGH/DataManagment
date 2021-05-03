@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SearchWindow" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <TabControl x:Name="SearchTab">
             <TabItem x:Name ="sTeacher" Header="Поиск учителя">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -38,6 +38,30 @@
                     <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchTeachers" Content="Принять" Margin="3" Width="70" Click="SearchTeachers" />
                         <Button x:Name ="btnCancelT" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name ="sSubject" Header="Поиск предмета">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column ="0" Margin="3" Text="ID предмета"/>
+                    <TextBox Name="tbSubjectID" Grid.Row ="0" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="1" Grid.Column ="0" Margin="3" Text="Название предмета"/>
+                    <TextBox Name="tbTitle" Grid.Row ="1" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="2" Grid.Column ="0" Margin="3" Text="Часы предмета"/>
+                    <TextBox Name="tbSubjectHours" Grid.Row ="2" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name ="btnSearchSubjects" Content="Принять" Margin="3" Width="70" Click="SearchSubjects" />
+                        <Button x:Name ="btnCancelS" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

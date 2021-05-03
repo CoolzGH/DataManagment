@@ -334,6 +334,13 @@ namespace VRA
                             this.dgTeachers.ItemsSource = search.FindedTeachers;
                         }
                         break;
+                    case "subject":
+                        search.ShowDialog();
+                        if (search.exec)
+                        {
+                            this.dgSubjects.ItemsSource = search.FindedSubjects;
+                        }
+                        break;
                     default: MessageBox.Show("Для поиска необходимо выбрать таблицу!"); break;
                 }
             }

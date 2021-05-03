@@ -114,5 +114,29 @@ namespace VRA.DataAccess
                 }
             }
         }
+
+        public IList<Subject> SearchSubjects(string SubjectID, string Title, string SubjectHours)
+        {
+            IList<Subject> subjects = new List<Subject>();
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Subject WHERE SubjectID like CASE WHEN @SubjectID not like '' THEN @SubjectID Else '%' END AND Title like @Title AND SubjectHours like CASE WHEN @SubjectHours not like '' THEN @SubjectHours Else '%' END";
+                    cmd.Parameters.AddWithValue("@Title", "%" + Title + "%");
+                    cmd.Parameters.AddWithValue("@SubjectID", SubjectID);
+                    cmd.Parameters.AddWithValue("@SubjectHours", SubjectHours);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            subjects.Add(LoadSubject(dataReader));
+                        }
+                    }
+                }
+            }
+            return subjects;
+        }
     }
 }

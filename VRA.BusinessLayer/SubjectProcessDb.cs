@@ -36,5 +36,11 @@ namespace VRA.BusinessLayer
         {
             _subjectDao.Delete(id);
         }
+
+        public IList<SubjectDto> SearchSubject(string SubjectID, string Title, string SubjectHours)
+        {
+            return DtoConverter.Convert(_subjectDao.SearchSubjects(SubjectID, Title, SubjectHours));
+        }
+
     }
 }
