@@ -23,23 +23,37 @@ namespace VRA
     {
         private readonly IList<TeacherDto> AllowTeachers = ProcessFactory.GetTeacherProcess().GetList();
         private readonly IList<SubjectDto> AllowSubjects = ProcessFactory.GetSubjectProcess().GetList();
+        private readonly IList<TypeOfClassDto> AllowTypeOfClasses = ProcessFactory.GetTypeOfClassProcess().GetList();
 
         public IList<TeacherDto> FindedTeachers;
         public IList<SubjectDto> FindedSubjects;
+        public IList<TypeOfClassDto> FindedTypeOfClasses;
+
+        private static readonly string[] TypeOfClasses = { "лекция", "практика" };
 
         public bool exec;
 
         public SearchWindow(string status)
         {
             InitializeComponent();
+
+            this.cbTypeOfClassName.ItemsSource = TypeOfClasses;
+
             switch (status)
             {
                 case "teacher":
                     this.SearchTab.SelectedIndex = 0;
                     this.sSubject.Visibility = Visibility.Collapsed;
+                    this.sTypeOfClass.Visibility = Visibility.Collapsed;
                     break;
                 case "subject":
                     this.SearchTab.SelectedIndex = 1;
+                    this.sTeacher.Visibility = Visibility.Collapsed;
+                    this.sTypeOfClass.Visibility = Visibility.Collapsed;
+                    break;
+                case "typeofclass":
+                    this.SearchTab.SelectedIndex = 2;
+                    this.sSubject.Visibility = Visibility.Collapsed;
                     this.sTeacher.Visibility = Visibility.Collapsed;
                     break;
             }
@@ -72,6 +86,22 @@ namespace VRA
             if ((int.TryParse(tbSubjectID.Text, out intSubjectID) || tbSubjectID.Text == "") && (int.TryParse(tbSubjectHours.Text, out intSubjectHours) || tbSubjectHours.Text == ""))
             {
                 this.FindedSubjects = ProcessFactory.GetSubjectProcess().SearchSubject(this.tbSubjectID.Text, this.tbTitle.Text, this.tbSubjectHours.Text);
+                this.exec = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("ID или Часы должены быть числом", "Проверка");
+            }
+        }
+
+        private void SearchTypeOfClasses(object sender, RoutedEventArgs e)
+        {
+            int intTypeOfClassID;
+            int intClassHours;
+            if ((int.TryParse(tbTypeOfClassID.Text, out intTypeOfClassID) || tbTypeOfClassID.Text == "") && (int.TryParse(tbClassHours.Text, out intClassHours) || tbClassHours.Text == ""))
+            {
+                this.FindedTypeOfClasses = ProcessFactory.GetTypeOfClassProcess().SearchTypeOfClass(this.tbTypeOfClassID.Text, this.cbTypeOfClassName.Text, this.tbClassHours.Text);
                 this.exec = true;
                 this.Close();
             }

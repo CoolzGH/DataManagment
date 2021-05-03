@@ -33,5 +33,7 @@ namespace VRA.BusinessLayer
         /// </summary>
         /// <param name=«id»>id предмета, которого надо удалить</param>
         void Delete(int id);
+
+        IList<TypeOfClassDto> SearchTypeOfClass(string TypeOfClassID, string TypeOfClassName, string ClassHours);
     }
 }

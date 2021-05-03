@@ -41,5 +41,7 @@ namespace VRA.DataAccess
         /// </summary>
         /// <param name="id">ID удаляемого типа занятия</param>
         void Delete(int id);
+
+        IList<TypeOfClass> SearchTypeOfClasses(string TypeOfClassID, string TypeOfClassName, string ClassHours);
     }
 }

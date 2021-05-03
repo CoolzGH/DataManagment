@@ -36,5 +36,10 @@ namespace VRA.BusinessLayer
         {
             _typeofclassDao.Delete(id);
         }
+
+        public IList<TypeOfClassDto> SearchTypeOfClass(string TypeOfClassID, string TypeOfClassName, string ClassHours)
+        {
+            return DtoConverter.Convert(_typeofclassDao.SearchTypeOfClasses(TypeOfClassID, TypeOfClassName, ClassHours));
+        }
     }
 }

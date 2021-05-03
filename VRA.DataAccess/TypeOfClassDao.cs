@@ -114,6 +114,30 @@ namespace VRA.DataAccess
                 }
             }
         }
+
+        public IList<TypeOfClass> SearchTypeOfClasses(string TypeOfClassID, string TypeOfClassName, string ClassHours)
+        {
+            IList<TypeOfClass> typeofclasses = new List<TypeOfClass>();
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM TypeOfClass WHERE TypeOfClassID like CASE WHEN @TypeOfClassID not like '' THEN @TypeOfClassID Else '%' END AND TypeOfClassName like @TypeOfClassName AND ClassHours like CASE WHEN @ClassHours not like '' THEN @ClassHours Else '%' END";
+                    cmd.Parameters.AddWithValue("@TypeOfClassName", "%" + TypeOfClassName + "%");
+                    cmd.Parameters.AddWithValue("@TypeOfClassID", TypeOfClassID);
+                    cmd.Parameters.AddWithValue("@ClassHours", ClassHours);
+                    using (var dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            typeofclasses.Add(LoadTypeOfClass(dataReader));
+                        }
+                    }
+                }
+            }
+            return typeofclasses;
+        }
     }
 }
 

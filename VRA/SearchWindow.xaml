@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VRA"
         mc:Ignorable="d"
-        Title="SearchWindow" Height="450" Width="800">
+        Title="SearchWindow" MinHeight="245" MinWidth="755">
     <Grid>
-        <TabControl x:Name="SearchTab">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="521*"/>
+            <ColumnDefinition Width="181*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="SearchTab" Grid.ColumnSpan="2">
             <TabItem x:Name ="sTeacher" Header="Поиск учителя">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -62,6 +66,30 @@
                     <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchSubjects" Content="Принять" Margin="3" Width="70" Click="SearchSubjects" />
                         <Button x:Name ="btnCancelS" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name ="sTypeOfClass" Header="Поиск типа занятия">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column ="0" Margin="3" Text="ID типа занятия"/>
+                    <TextBox Name="tbTypeOfClassID" Grid.Row ="0" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="1" Grid.Column ="0" Margin="3" Text="Название типа занятия"/>
+                    <ComboBox Name="cbTypeOfClassName" Grid.Row ="1" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="2" Grid.Column ="0" Margin="3" Text="Часы типа занятия"/>
+                    <TextBox Name="tbClassHours" Grid.Row ="2" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name ="btnSearchTypeOfClasses" Content="Принять" Margin="3" Width="70" Click="SearchTypeOfClasses" />
+                        <Button x:Name ="btnCancelTOC" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
