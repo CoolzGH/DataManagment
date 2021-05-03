@@ -136,7 +136,7 @@ namespace VRA.DataAccess
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "SELECT TeacherID, SecondName, FirstName, MiddleName, AcademicDegree, Position, Experience FROM Teacher WHERE SecondName like @SecondName AND FirstName like @FirstName AND MiddleName like @MiddleName AND AcademicDegree like @AcademicDegree AND Position like @Position";
-                    cmd.Parameters.AddWithValue("@SecondName","%"+SecondName +"%");
+                    cmd.Parameters.AddWithValue("@SecondName", "%" + SecondName + "%");
                     cmd.Parameters.AddWithValue("@FirstName", "%" + FirstName + "%");
                     cmd.Parameters.AddWithValue("@MiddleName", "%" + MiddleName + "%");
                     cmd.Parameters.AddWithValue("@AcademicDegree", "%" + AcademicDegree + "%");
