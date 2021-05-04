@@ -132,6 +132,10 @@ namespace VRA
             if ((int.TryParse(tbLoadID.Text, out intLoadID) || tbLoadID.Text == "") && (int.TryParse(tbGroupNumber.Text, out intGroupNumber) || tbGroupNumber.Text == ""))
             {
                 string loadDate;
+                string startDate;
+                string endDate;
+                int check1;
+                int check2;
                 if (string.IsNullOrEmpty(dpLoadDate.Text))
                 { 
                     loadDate = "%";
@@ -140,7 +144,30 @@ namespace VRA
                 {
                     loadDate = Convert.ToDateTime(this.dpLoadDate.Text).ToString("yyyy-MM-dd");
                 }
-                this.FindedLoads = ProcessFactory.GetLoadProcess().SearchLoad(this.tbLoadID.Text, this.cbTeacherID.Text, this.tbGroupNumber.Text, loadDate, this.cbSubjectID.Text, this.cbTypeOfClassID.Text);
+
+                if (string.IsNullOrEmpty(dpStartDate.Text))
+                {
+                    check1=0;
+                    startDate = "%";
+                }
+                else
+                {
+                    check1 = 1;
+                    startDate = Convert.ToDateTime(this.dpStartDate.Text).ToString("yyyy-MM-dd");
+                }
+
+                if (string.IsNullOrEmpty(dpEndDate.Text))
+                {
+                    check2 = 0;
+                    endDate = "%";
+                }
+                else
+                {
+                    check2 = 1;
+                    endDate = Convert.ToDateTime(this.dpEndDate.Text).ToString("yyyy-MM-dd");
+                }
+
+                this.FindedLoads = ProcessFactory.GetLoadProcess().SearchLoad(this.tbLoadID.Text, this.cbTeacherID.Text, this.tbGroupNumber.Text, loadDate, this.cbSubjectID.Text, this.cbTypeOfClassID.Text, startDate, endDate, check1, check2);
                 this.exec = true;
                 this.Close();
             }

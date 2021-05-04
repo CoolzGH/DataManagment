@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VRA"
         mc:Ignorable="d"
-        Title="SearchWindow" MinHeight="245" MinWidth="755">
+        Title="SearchWindow" MinHeight="285" MinWidth="655">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="521*"/>
@@ -39,7 +39,7 @@
                     <TextBox Name="tbPosition" Grid.Row ="4" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
                     <TextBlock Grid.Row="5" Grid.Column ="0" Margin="3" Text="Опыт"/>
                     <TextBox Name="tbExperience" Grid.Row ="5" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
-                    <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Grid.Row="6" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchTeachers" Content="Принять" Margin="3" Width="70" Click="SearchTeachers" />
                         <Button x:Name ="btnCancelT" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>
@@ -63,7 +63,7 @@
                     <TextBox Name="tbTitle" Grid.Row ="1" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
                     <TextBlock Grid.Row="2" Grid.Column ="0" Margin="3" Text="Часы предмета"/>
                     <TextBox Name="tbSubjectHours" Grid.Row ="2" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
-                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchSubjects" Content="Принять" Margin="3" Width="70" Click="SearchSubjects" />
                         <Button x:Name ="btnCancelS" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>
@@ -87,7 +87,7 @@
                     <ComboBox Name="cbTypeOfClassName" Grid.Row ="1" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
                     <TextBlock Grid.Row="2" Grid.Column ="0" Margin="3" Text="Часы типа занятия"/>
                     <TextBox Name="tbClassHours" Grid.Row ="2" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
-                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchTypeOfClasses" Content="Принять" Margin="3" Width="70" Click="SearchTypeOfClasses" />
                         <Button x:Name ="btnCancelTOC" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>
@@ -103,8 +103,11 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -121,7 +124,11 @@
                     <ComboBox Name="cbSubjectID" Grid.Row ="4" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DisplayMemberPath="SubjectId"/>
                     <TextBlock Grid.Row="5" Grid.Column ="0" Margin="3" Text="ID типа занятия"/>
                     <ComboBox Name="cbTypeOfClassID" Grid.Row ="5" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left" ItemsSource="{Binding}" DisplayMemberPath="TypeOfClassId"/>
-                    <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Grid.Row="6" Grid.Column ="0" Margin="3" Text="Дата с:"/>
+                    <DatePicker Name="dpStartDate" Grid.Row ="6" Grid.Column="1" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="6" Grid.Column ="2" Margin="3" Text="по:"/>
+                    <DatePicker Name="dpEndDate" Grid.Row ="6" Grid.Column="3" Margin="3" Width="200" HorizontalAlignment="Left"/>
+                    <StackPanel Grid.Row="7" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button x:Name ="btnSearchLoads" Content="Принять" Margin="3" Width="70" Click="SearchLoads" />
                         <Button x:Name ="btnCancelL" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
                     </StackPanel>

@@ -14,6 +14,6 @@ namespace VRA.BusinessLayer
         void Update(LoadDto load);
         void Delete(int id);
 
-        IList<LoadDto> SearchLoad(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID);
+        IList<LoadDto> SearchLoad(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID, string StartDate, string EndDate, int check1, int check2);
     }
 }

@@ -18,6 +18,6 @@ namespace VRA.DataAccess
 
         void Delete(int id);
 
-        IList<Load> SearchLoads(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID);
+        IList<Load> SearchLoads(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID, string StartDate, string EndDate, int check1, int check2);
     }
 }

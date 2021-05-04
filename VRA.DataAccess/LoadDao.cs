@@ -124,7 +124,7 @@ namespace VRA.DataAccess
             }
         }
 
-        public IList<Load> SearchLoads(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID)
+        public IList<Load> SearchLoads(string LoadID, string TeacherID, string GroupNumber, string LoadDate, string SubjectID, string TypeOfClassID, string StartDate, string EndDate, int check1, int check2)
         {
             IList<Load> loads = new List<Load>();
             using (var conn = GetConnection())
@@ -132,13 +132,17 @@ namespace VRA.DataAccess
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Load WHERE LoadID like CASE WHEN @LoadID not like '' THEN @LoadID Else '%' END AND TeacherID like CASE WHEN @TeacherID not like '' THEN @TeacherID Else '%' END AND GroupNumber like CASE WHEN @GroupNumber not like '' THEN @GroupNumber Else '%' END AND LoadDate like @LoadDate AND SubjectID like CASE WHEN @SubjectID not like '' THEN @SubjectID Else '%' END AND TypeOfClassID like CASE WHEN @TypeOfClassID not like '' THEN @TypeOfClassID Else '%' END";
+                    cmd.CommandText = "SELECT * FROM Load WHERE LoadID like CASE WHEN @LoadID not like '' THEN @LoadID Else '%' END AND TeacherID like CASE WHEN @TeacherID not like '' THEN @TeacherID Else '%' END AND GroupNumber like CASE WHEN @GroupNumber not like '' THEN @GroupNumber Else '%' END AND LoadDate like @LoadDate AND SubjectID like CASE WHEN @SubjectID not like '' THEN @SubjectID Else '%' END AND TypeOfClassID like CASE WHEN @TypeOfClassID not like '' THEN @TypeOfClassID Else '%' END AND LoadDate BETWEEN CASE WHEN @check1=1 THEN @StartDate ELSE '1000-01-01' END AND CASE WHEN @check2=1 THEN @EndDate ELSE '3000-01-01' END";
                     cmd.Parameters.AddWithValue("@LoadID", LoadID);
                     cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
                     cmd.Parameters.AddWithValue("@GroupNumber", GroupNumber);
                     cmd.Parameters.AddWithValue("@LoadDate", LoadDate);
                     cmd.Parameters.AddWithValue("@SubjectID", SubjectID);
                     cmd.Parameters.AddWithValue("@TypeOfClassID", TypeOfClassID);
+                    cmd.Parameters.AddWithValue("@StartDate", StartDate);
+                    cmd.Parameters.AddWithValue("@EndDate", EndDate);
+                    cmd.Parameters.AddWithValue("@check1", check1);
+                    cmd.Parameters.AddWithValue("@check2", check2);
                     using (var dataReader = cmd.ExecuteReader())
                     {
                         while (dataReader.Read())
