@@ -131,7 +131,16 @@ namespace VRA
             int intGroupNumber;
             if ((int.TryParse(tbLoadID.Text, out intLoadID) || tbLoadID.Text == "") && (int.TryParse(tbGroupNumber.Text, out intGroupNumber) || tbGroupNumber.Text == ""))
             {
-                this.FindedLoads = ProcessFactory.GetLoadProcess().SearchLoad(this.tbLoadID.Text, this.cbTeacherID.Text, this.tbGroupNumber.Text, this.dpLoadDate.Text, this.cbSubjectID.Text, this.cbTypeOfClassID.Text);
+                string loadDate;
+                if (string.IsNullOrEmpty(dpLoadDate.Text))
+                { 
+                    loadDate = "%";
+                }
+                else
+                {
+                    loadDate = Convert.ToDateTime(this.dpLoadDate.Text).ToString("yyyy-MM-dd");
+                }
+                this.FindedLoads = ProcessFactory.GetLoadProcess().SearchLoad(this.tbLoadID.Text, this.cbTeacherID.Text, this.tbGroupNumber.Text, loadDate, this.cbSubjectID.Text, this.cbTypeOfClassID.Text);
                 this.exec = true;
                 this.Close();
             }
