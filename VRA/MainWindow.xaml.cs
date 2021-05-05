@@ -367,6 +367,10 @@ namespace VRA
             {
                 case "teacher":
                     setExperience.ShowDialog();
+                    if (setExperience.execset)
+                    {
+                        dgTeachers.ItemsSource = ProcessFactory.GetTeacherProcess().GetList();
+                    }
                     break;
                 default: MessageBox.Show("Только для таблицы Учителя!"); break;
             }

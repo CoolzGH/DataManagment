@@ -21,6 +21,7 @@ namespace VRA
     /// </summary>
     public partial class SetExperienceWindow : Window
     {
+        public bool execset;
 
         public SetExperienceWindow(string status)
         {
@@ -42,6 +43,7 @@ namespace VRA
         private void SetExperience(object sender, RoutedEventArgs e)
         {
                 ProcessFactory.GetTeacherProcess().SetExperienceP();
+                this.execset = true;
                 this.Close();
         }
     }

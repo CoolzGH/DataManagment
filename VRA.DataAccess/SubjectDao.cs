@@ -123,7 +123,7 @@ namespace VRA.DataAccess
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Subject WHERE SubjectID like CASE WHEN @SubjectID not like '' THEN @SubjectID Else '%' END AND Title like @Title AND SubjectHours like CASE WHEN @SubjectHours not like '' THEN @SubjectHours Else '%' END";
+                    cmd.CommandText = "SELECT * FROM Subject WHERE SubjectID like CASE WHEN @SubjectID not like '' THEN @SubjectID Else '%' END AND Title like @Title AND (SubjectHours like CASE WHEN @SubjectHours not like '' THEN @SubjectHours Else '%' END OR (SubjectHours IS NULL AND @SubjectHours like ''))";
                     cmd.Parameters.AddWithValue("@Title", "%" + Title + "%");
                     cmd.Parameters.AddWithValue("@SubjectID", SubjectID);
                     cmd.Parameters.AddWithValue("@SubjectHours", SubjectHours);
