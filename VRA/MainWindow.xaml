@@ -137,6 +137,14 @@
                     <TextBlock HorizontalAlignment="Center" Margin="1" FontSize="10"><Run Text="Поиск"/></TextBlock>
                 </StackPanel>
             </Button>
+            <Button  x:Name="btnSetExperience" Height="50" Width="100"  Click="btnSetExperience_Click" Visibility="Visible" Margin="0, 0, 0, 3">
+                <Button.ToolTip>
+                    <TextBlock><Run Text="Хранимая процедура"/></TextBlock>
+                </Button.ToolTip>
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Margin="1" FontSize="10" TextWrapping="Wrap"><Run Text="Хранимая процедура"/></TextBlock>
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

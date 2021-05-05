@@ -154,5 +154,18 @@ namespace VRA.DataAccess
             return teachers;
         }
 
+        public void SetExperience()
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "EXECUTE SetExperience";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

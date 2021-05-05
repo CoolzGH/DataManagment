@@ -34,5 +34,7 @@ namespace VRA.BusinessLayer
         void Delete(int id);
 
         IList<TeacherDto> SearchTeacher(string SecondName, string FirstName, string MiddleName, string AcademicDegree, string Position, string Experience);
+
+        void SetExperienceP();
     }
 }

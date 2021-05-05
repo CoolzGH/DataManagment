@@ -58,6 +58,9 @@
     <Compile Include="SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SetExperienceWindow.xaml.cs">
+      <DependentUpon>SetExperienceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetExperienceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

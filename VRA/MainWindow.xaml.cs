@@ -360,5 +360,18 @@ namespace VRA
             }
         }
 
+        private void btnSetExperience_Click(object sender, RoutedEventArgs e)
+        {
+            SetExperienceWindow setExperience = new SetExperienceWindow(status);
+            switch (status)
+            {
+                case "teacher":
+                    setExperience.ShowDialog();
+                    break;
+                default: MessageBox.Show("Только для таблицы Учителя!"); break;
+            }
+
+        }
+
     }
 }

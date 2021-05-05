@@ -1,0 +1,23 @@
+﻿<Window x:Class="VRA.SetExperienceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VRA"
+        mc:Ignorable="d"
+        Title="Хранимая процедура" Height="65" Width="280" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name ="btnSetExperince" Content="Выполнить" Margin="3" Width="70" Click="SetExperience" />
+            <Button x:Name ="btnCancelSet" Content="Отмена" Margin="3" Width="70" Click="CloseForm"/>
+        </StackPanel>
+    </Grid>
+</Window>

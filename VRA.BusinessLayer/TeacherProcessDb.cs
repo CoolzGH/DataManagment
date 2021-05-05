@@ -42,5 +42,10 @@ namespace VRA.BusinessLayer
             return DtoConverter.Convert(_teacherDao.SearchTeachers(SecondName, FirstName, MiddleName, AcademicDegree, Position, Experience));
         }
 
+        public void SetExperienceP()
+        {
+            _teacherDao.SetExperience();
+        }
+
     }
 }
