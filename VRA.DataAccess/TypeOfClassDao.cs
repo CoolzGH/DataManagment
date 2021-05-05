@@ -123,7 +123,7 @@ namespace VRA.DataAccess
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM TypeOfClass WHERE TypeOfClassID like CASE WHEN @TypeOfClassID not like '' THEN @TypeOfClassID Else '%' END AND TypeOfClassName like @TypeOfClassName AND ClassHours like CASE WHEN @ClassHours not like '' THEN @ClassHours Else '%' END";
+                    cmd.CommandText = "SELECT * FROM TypeOfClass WHERE TypeOfClassID like CASE WHEN @TypeOfClassID not like '' THEN @TypeOfClassID Else '%' END AND TypeOfClassName like @TypeOfClassName AND (ClassHours like CASE WHEN @ClassHours not like '' THEN @ClassHours Else '%' END OR (ClassHours IS NULL AND @ClassHours like ''))";
                     cmd.Parameters.AddWithValue("@TypeOfClassName", "%" + TypeOfClassName + "%");
                     cmd.Parameters.AddWithValue("@TypeOfClassID", TypeOfClassID);
                     cmd.Parameters.AddWithValue("@ClassHours", ClassHours);
