@@ -44,5 +44,10 @@ namespace VRA.BusinessLayer
         {
             return new ReportGenerator();
         }
+
+        public static IReportItemProcess GetReportProcess()
+        {
+            return new ReportItemProcess();
+        }
     }
 }

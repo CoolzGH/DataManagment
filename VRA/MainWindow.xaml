@@ -60,6 +60,7 @@
             <MenuItem Name="Reports" Header="Отчеты">
                 <MenuItem Name="ExcelExporterButton" Header="Экспорт таблицы Excel" Click="ExсelExporterButton_Click" />
             </MenuItem>
+            <MenuItem Name="GraphReportButton" Header="Визуализация данных" Click="GraphReportButton_Click"/>
         </Menu>
         <StatusBar Name="statusBar" Grid.Row="2" Grid.ColumnSpan="3"  VerticalAlignment="Center" Height="40">
             <Label Name ="statusLabel" Content="Работа с таблицей:" Visibility="Visible">

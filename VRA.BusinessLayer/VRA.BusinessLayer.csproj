@@ -60,6 +60,7 @@
     <Compile Include="Converters\DtoConverter.cs" />
     <Compile Include="ILoadProcess.cs" />
     <Compile Include="IReportGenerator.cs" />
+    <Compile Include="IReportItemProcess.cs" />
     <Compile Include="ISettingsProcess.cs" />
     <Compile Include="ISubjectProcess.cs" />
     <Compile Include="ITeacherProcess.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="ProcessFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportGenerator.cs" />
+    <Compile Include="ReportItemProcess.cs" />
     <Compile Include="SettingsProcess.cs" />
     <Compile Include="SubjectProcessDb.cs" />
     <Compile Include="TeacherProcessDb.cs" />
