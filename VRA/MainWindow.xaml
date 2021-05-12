@@ -57,6 +57,9 @@
                 <MenuItem Name="dataBaseS" Header="Настроить соединение с БД"
                     Click="btnDatabase_Click"/>
             </MenuItem>
+            <MenuItem Name="Reports" Header="Отчеты">
+                <MenuItem Name="ExcelExporterButton" Header="Экспорт таблицы Excel" Click="ExсelExporterButton_Click" />
+            </MenuItem>
         </Menu>
         <StatusBar Name="statusBar" Grid.Row="2" Grid.ColumnSpan="3"  VerticalAlignment="Center" Height="40">
             <Label Name ="statusLabel" Content="Работа с таблицей:" Visibility="Visible">

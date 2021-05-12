@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using VRA.Dto;
 using VRA.BusinessLayer;
+using System.IO;
 
 namespace VRA
 {
@@ -375,6 +377,43 @@ namespace VRA
                 default: MessageBox.Show("Только для таблицы Учителя!"); break;
             }
 
+        }
+
+        private void ExсelExporterButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<object> grid = null;
+            switch (status)
+            {
+                case "teacher":
+                    grid = this.dgTeachers.ItemsSource.Cast<object>().ToList();
+                    break;
+                case "subject":
+                    grid = this.dgSubjects.ItemsSource.Cast<object>().ToList();
+                    break;
+                case "typeofclass":
+                    grid = this.dgTypeOfClasses.ItemsSource.Cast<object>().ToList();
+                    break;
+                case "load":
+                    grid = this.dgLoads.ItemsSource.Cast<object>().ToList();
+                    break;
+            }
+
+
+            SaveFileDialog saveXlsxDialog = new SaveFileDialog
+            {
+                DefaultExt = ".xlsx",
+                Filter = "Excel Files(.xlsx)|*.xlsx",
+                AddExtension = true,
+                FileName = status
+            };
+
+            bool? result = saveXlsxDialog.ShowDialog();
+            if (result == true)
+            {
+                FileInfo xlsxFile = new FileInfo(saveXlsxDialog.FileName);
+
+                ProcessFactory.GetReport().fillExcelTableByType(grid, status, xlsxFile);
+            }
         }
 
     }

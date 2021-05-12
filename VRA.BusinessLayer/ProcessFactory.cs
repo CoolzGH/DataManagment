@@ -39,5 +39,10 @@ namespace VRA.BusinessLayer
         {
             return new SettingsProcess();
         }
+
+        public static IReportGenerator GetReport()
+        {
+            return new ReportGenerator();
+        }
     }
 }
